@@ -1,4 +1,4 @@
-package com.fclass.ImdbUserlistScrapper;
+package com.fclass.ImdbUserlist;
 
 import com.fclass.Movie;
 import org.jsoup.Jsoup;
@@ -67,7 +67,10 @@ public class ImdbUserListScrapper {
                 This returns a combined string of director and actors which is not clean at all so cleaning it in a separate class
                  */
                 String castAndDirectorString = movieElement.select("p.text-small.text-muted:nth-of-type(3)").text();
-                stringCleaner.directorAndCastSplitor(castAndDirectorString, directorList,castList);
+//                stringCleaner.directorAndCastSplitor(castAndDirectorString, directorList,castList);
+//                stringCleaner.starSplitor(castAndDirectorString, castList);
+                stringCleaner.stringSplitor(castAndDirectorString,directorList,castList);
+
 
                 /*
                 String Parsing to Integers or Floats etc
@@ -95,7 +98,6 @@ public class ImdbUserListScrapper {
                 m1.setImdbRating(imdbRatingScrap);
                 m1.setMetaScore(metascoreScrap);
                 m1.setMoviePageUrl(movieUrl);
-                m1.setCast(castList);
                 m1.setCast(castList);
                 m1.setDirectors(directorList);
                 movieTopList.put(rank, m1);

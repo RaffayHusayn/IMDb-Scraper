@@ -1,4 +1,4 @@
-package com.fclass.ImdbUserlistScrapper;
+package com.fclass.ImdbUserlist;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
