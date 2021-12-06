@@ -44,6 +44,7 @@ public class ImdbUserListScrapper {
                 String imdbRatingString = movieElement.select("div.lister-item-content").first().select("div.ipl-rating-widget > div.ipl-rating-star.small > span.ipl-rating-star__rating").text();
                 String metascoreString = movieElement.select("div.lister-item-content").first().select("div.inline-block.ratings-metascore > span.metascore.favorable").text();
                 String movieUrlString = movieElement.select("div.lister-item-image.ribbonize > a").attr("href");
+                String movieDesc = movieElement.select("div.lister-item-content > p:nth-of-type(2)").text();
 
 
 
@@ -100,6 +101,7 @@ public class ImdbUserListScrapper {
                 m1.setMoviePageUrl(movieUrl);
                 m1.setCast(castList);
                 m1.setDirectors(directorList);
+                m1.setDescription(movieDesc);
                 movieTopList.put(rank, m1);
 
             }

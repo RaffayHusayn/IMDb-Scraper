@@ -13,6 +13,7 @@ public class Movie {
     String moviePageUrl; //url to imdb page of the movie
     List<String> cast; // list of cast members
     List<String> directors; //list of directors, usually one but can be more
+    String description;
 
     public String getName() {
         return name;
@@ -95,11 +96,20 @@ public class Movie {
         this.directors = directors;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return name + " ( "+ releaseYear + " )"+
                 " \n "+ certificate + " | " + genre + " | Stars: "+imdbRating+ "| Metascore : "+metaScore+
                 "\n Director : "+ directors+ "    |  Cast : "+ cast +
-                " \n Movie Url: "+ moviePageUrl ;
+                " \n Movie Url : "+ moviePageUrl +
+                "\n Synopsis : "+ description;
     }
 }

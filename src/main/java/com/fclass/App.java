@@ -16,7 +16,7 @@ public class App
         This returns a Hashmap<Integer, Movie> , This link is for TV shows User List
          */
         ImdbUserListScrapper movieList = new ImdbUserListScrapper();
-        movieList.scrapImdbUserList("https://www.imdb.com/list/ls084290130/?ref_=rltls_22");
+        movieList.scrapImdbUserList("https://www.imdb.com/list/ls039658291/?ref_=rltls_37");
 
 
 
