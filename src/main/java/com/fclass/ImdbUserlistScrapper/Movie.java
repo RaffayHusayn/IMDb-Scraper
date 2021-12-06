@@ -8,8 +8,11 @@ public class Movie {
     int rank; // not applicable in most cases
     String certificate; // the rating that movie got eg: R, PG-13 etc
     List<String> genre; // List of Genres
-    float imdbRating;
-    int metaScore;
+    float imdbRating; //imdb star ratings
+    int metaScore; //metascore , if 0 means the score wasn't avaible
+    String moviePageUrl; //url to imdb page of the movie
+    List<String> cast; // list of cast members
+    List<String> directors; //list of directors, usually one but can be more
 
     public String getName() {
         return name;
@@ -68,9 +71,34 @@ public class Movie {
         this.metaScore = metaScore;
     }
 
+    public String getMoviePageUrl() {
+        return moviePageUrl;
+    }
+
+    public void setMoviePageUrl(String moviePageUrl) {
+        this.moviePageUrl = moviePageUrl;
+    }
+
+    public List<String> getCast() {
+        return cast;
+    }
+
+    public void setCast(List<String> cast) {
+        this.cast = cast;
+    }
+
+    public List<String> getDirectors() {
+        return directors;
+    }
+
+    public void setDirectors(List<String> directors) {
+        this.directors = directors;
+    }
+
     @Override
     public String toString() {
-        return name + "( "+ releaseYear + " ) \n "+ certificate + " | "
-                + genre + " | Stars: "+imdbRating+ "| Metascore : "+metaScore  ;
+        return name + " ( "+ releaseYear + " )"+
+                " \n "+ certificate + " | " + genre + " | Stars: "+imdbRating+ "| Metascore : "+metaScore+
+                " \n Movie Url: "+ moviePageUrl + "    |   Image Url : "+ imageUrl;
     }
 }

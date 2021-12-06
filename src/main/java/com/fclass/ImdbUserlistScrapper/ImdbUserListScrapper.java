@@ -20,20 +20,23 @@ public class ImdbUserListScrapper {
         try {
             Document doc = Jsoup.connect(ImdbUserListURL).get();
             Elements movies = doc.select("div.lister-item.mode-detail");
-            for (Element movieElement : movies.select("div.lister-item-content")) {
+            for (Element movieElement : movies) {
 
                 Movie m1 = new Movie();
                 List<String> genresList = new ArrayList<>();
-                String movie = movieElement.getElementsByTag("h3").first().select("a").text();
-                String rankString = movieElement.getElementsByTag("h3").first().select("span.lister-item-index.unbold.text-primary").text();
-                String yearString = movieElement.getElementsByTag("h3").first().select("span.lister-item-year.text-muted.unbold").text();
-                String certificate = movieElement.getElementsByTag("p").first().select("span.certificate").text();
+                String movie = movieElement.select("div.lister-item-content").first().getElementsByTag("h3").first().select("a").text();
+                String rankString = movieElement.select("div.lister-item-content").first().getElementsByTag("h3").first().select("span.lister-item-index.unbold.text-primary").text();
+                String yearString = movieElement.select("div.lister-item-content").first().getElementsByTag("h3").first().select("span.lister-item-year.text-muted.unbold").text();
+                String certificate = movieElement.select("div.lister-item-content").first().getElementsByTag("p").first().select("span.certificate").text();
+                String imdbRatingString = movieElement.select("div.lister-item-content").first().select("div.ipl-rating-widget > div.ipl-rating-star.small > span.ipl-rating-star__rating").text();
+                String metascoreString = movieElement.select("div.lister-item-content").first().select("div.inline-block.ratings-metascore > span.metascore.favorable").text();
+                String movieUrlString = movieElement.select("div.lister-item-image.ribbonize > a").attr("href");
                 String yearNoBraces = yearString.replaceAll("[^0-9]", " ").replaceAll("\\s", "");
                 String rankCleaned = rankString.replaceAll("[^0-9]", " ").replaceAll("\\s", "");
-                String imdbRatingString = movieElement.select("div.ipl-rating-widget > div.ipl-rating-star.small > span.ipl-rating-star__rating").text();
-                String metascoreString = movieElement.select("div.inline-block.ratings-metascore > span.metascore.favorable").text();
+                String movieUrl = "imdb.com"+movieUrlString;
 
-                Elements genres = movieElement.getElementsByTag("p").first().select("span.genre");
+
+                Elements genres = movieElement.select("div.lister-item-content").first().getElementsByTag("p").first().select("span.genre");
                 for(Element g: genres){
                     genresList.add(g.text());
                 }
@@ -55,6 +58,7 @@ public class ImdbUserListScrapper {
                 m1.setGenre(genresList);
                 m1.setImdbRating(imdbRatingScrap);
                 m1.setMetaScore(metascoreScrap);
+                m1.setMoviePageUrl(movieUrl);
                 movieTopList.put(rank, m1);
 
             }
