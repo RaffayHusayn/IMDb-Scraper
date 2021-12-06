@@ -1,4 +1,4 @@
-package com.fclass.MovieScrapper;
+package com.fclass.ImdbUserlistScrapper;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -11,12 +11,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ImdbScrapperMovie {
-    public void getTop50List() {
+public class ImdbUserListScrapper {
+    String ImdbUserListURL;
+    public void scrapImdbUserList(String ImdbUserListURL) {
+        this.ImdbUserListURL = ImdbUserListURL;
         Map<Integer, Movie> movieTopList = new HashMap<>();
 
         try {
-            Document doc = Jsoup.connect("https://www.imdb.com/list/ls055386972/").get();
+            Document doc = Jsoup.connect(ImdbUserListURL).get();
             Elements movies = doc.select("div.lister-item.mode-detail");
             for (Element movieElement : movies.select("div.lister-item-content")) {
 

@@ -1,4 +1,4 @@
-package com.fclass.MovieScrapper;
+package com.fclass.ImdbUserlistScrapper;
 
 import java.util.List;
 

@@ -1,17 +1,8 @@
 package com.fclass;
 
-import com.fclass.MovieScrapper.ImdbScrapper;
-import com.fclass.MovieScrapper.ImdbScrapperMovie;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import com.fclass.ImdbUserlistScrapper.ImdbUserListScrapper;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Hello world!
@@ -21,8 +12,8 @@ public class App
 {
     public static void main( String[] args ) throws IOException {
 
-        ImdbScrapperMovie movieList = new ImdbScrapperMovie();
-        movieList.getTop50List();
+        ImdbUserListScrapper movieList = new ImdbUserListScrapper();
+        movieList.scrapImdbUserList("https://www.imdb.com/list/ls098795660/?ref_=tt_rls_1");
 
 //        ImdbScrapper top50 = new ImdbScrapper();
 //        top50.top50List();
