@@ -1,10 +1,13 @@
 package com.fclass.MovieScrapper;
 
+import java.util.List;
+
 public class Movie {
     String name;
     int releaseYear;
     int rank;
     String certificate;
+    List<String> genre;
 
     public String getName() {
         return name;
@@ -38,8 +41,17 @@ public class Movie {
         this.certificate = certificate;
     }
 
+
+    public List<String> getGenre() {
+        return genre;
+    }
+
+    public void setGenre(List<String> genre) {
+        this.genre = genre;
+    }
+
     @Override
     public String toString() {
-        return name + "( "+ releaseYear + " ) \n "+ certificate ;
+        return name + "( "+ releaseYear + " ) \n "+ certificate + " | " + genre ;
     }
 }

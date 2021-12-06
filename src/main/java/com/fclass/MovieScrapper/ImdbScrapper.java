@@ -23,19 +23,25 @@ public class ImdbScrapper {
             {
 
                 List<String> movieAndYear = new ArrayList<>();
+                List<String> genresList = new ArrayList<>();
                 String movie = movieElement.getElementsByTag("h3").first().select("a").text();
                 String rankString = movieElement.getElementsByTag("h3").first().select("span.lister-item-index.unbold.text-primary").text();
                 String yearString = movieElement.getElementsByTag("h3").first().select("span.lister-item-year.text-muted.unbold").text();
                 String yearNoBraces = yearString.replaceAll("[^0-9]", " ").replaceAll("\\s", "");
                 String rankCleaned = rankString.replaceAll("[^0-9]", " ").replaceAll("\\s", "");
                 String certificate = movieElement.getElementsByTag("p").first().select("span.certificate").text();
+                Elements genres = movieElement.getElementsByTag("p").first().select("span.genre");
+                for(Element g: genres){
+                    genresList.add(g.text());
+                }
                 int year = Integer.parseInt(yearNoBraces);
                 int rank = Integer.parseInt(rankCleaned);
                 movieAndYear.add(movie);
                 movieAndYear.add(yearNoBraces);
                 movieAndYear.add(certificate);
-                movieRankList.put(rank, movieAndYear);
 
+                movieRankList.put(rank, movieAndYear);
+                System.out.println(genresList);
 //                System.out.println(movie);
 //                System.out.println(rank);
 //                System.out.println(year);
@@ -49,9 +55,9 @@ public class ImdbScrapper {
 
 //        System.out.println(movieRankList.get(1));
 //        System.out.println(movieRankList.get(3));
-        for(Map.Entry<Integer , List<String>> movieSet: movieRankList.entrySet()){
-            System.out.println(movieSet.getKey() + " ------> "+ movieSet.getValue());
-        }
+//        for(Map.Entry<Integer , List<String>> movieSet: movieRankList.entrySet()){
+//            System.out.println(movieSet.getKey() + " ------> "+ movieSet.getValue());
+//        }
     }
 
 
