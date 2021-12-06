@@ -4,6 +4,7 @@ public class Movie {
     String name;
     int releaseYear;
     int rank;
+    String certificate;
 
     public String getName() {
         return name;
@@ -29,8 +30,16 @@ public class Movie {
         this.rank = rank;
     }
 
+    public String getCertificate() {
+        return certificate;
+    }
+
+    public void setCertificate(String certificate) {
+        this.certificate = certificate;
+    }
+
     @Override
     public String toString() {
-        return name + "( "+ releaseYear + " )";
+        return name + "( "+ releaseYear + " ) \n "+ certificate ;
     }
 }

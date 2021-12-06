@@ -28,10 +28,12 @@ public class ImdbScrapper {
                 String yearString = movieElement.getElementsByTag("h3").first().select("span.lister-item-year.text-muted.unbold").text();
                 String yearNoBraces = yearString.replaceAll("[^0-9]", " ").replaceAll("\\s", "");
                 String rankCleaned = rankString.replaceAll("[^0-9]", " ").replaceAll("\\s", "");
+                String certificate = movieElement.getElementsByTag("p").first().select("span.certificate").text();
                 int year = Integer.parseInt(yearNoBraces);
                 int rank = Integer.parseInt(rankCleaned);
                 movieAndYear.add(movie);
                 movieAndYear.add(yearNoBraces);
+                movieAndYear.add(certificate);
                 movieRankList.put(rank, movieAndYear);
 
 //                System.out.println(movie);

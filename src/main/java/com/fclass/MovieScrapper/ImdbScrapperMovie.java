@@ -22,6 +22,7 @@ public class ImdbScrapperMovie {
                 String movie = movieElement.getElementsByTag("h3").first().select("a").text();
                 String rankString = movieElement.getElementsByTag("h3").first().select("span.lister-item-index.unbold.text-primary").text();
                 String yearString = movieElement.getElementsByTag("h3").first().select("span.lister-item-year.text-muted.unbold").text();
+                String certificate = movieElement.getElementsByTag("p").first().select("span.certificate").text();
                 String yearNoBraces = yearString.replaceAll("[^0-9]", " ").replaceAll("\\s", "");
                 String rankCleaned = rankString.replaceAll("[^0-9]", " ").replaceAll("\\s", "");
                 int year = Integer.parseInt(yearNoBraces);
@@ -29,6 +30,7 @@ public class ImdbScrapperMovie {
                 m1.setName(movie);
                 m1.setRank(rank);
                 m1.setReleaseYear(year);
+                m1.setCertificate(certificate);
                 movieTopList.put(rank, m1);
 
             }

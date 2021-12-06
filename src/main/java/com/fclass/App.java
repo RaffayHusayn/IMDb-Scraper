@@ -24,6 +24,8 @@ public class App
         ImdbScrapperMovie movieList = new ImdbScrapperMovie();
         movieList.getTop50List();
 
+//        ImdbScrapper top50 = new ImdbScrapper();
+//        top50.top50List();
 
         }
     }
