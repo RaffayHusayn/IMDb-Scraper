@@ -24,6 +24,8 @@ public class ImdbScrapper {
 
                 List<String> movieAndYear = new ArrayList<>();
                 List<String> genresList = new ArrayList<>();
+                List<String> castList = new ArrayList<>();
+                List<String> directorList = new ArrayList<>();
                 String movie = movieElement.getElementsByTag("h3").first().select("a").text();
                 String rankString = movieElement.getElementsByTag("h3").first().select("span.lister-item-index.unbold.text-primary").text();
                 String yearString = movieElement.getElementsByTag("h3").first().select("span.lister-item-year.text-muted.unbold").text();
@@ -36,6 +38,10 @@ public class ImdbScrapper {
                 for(Element g: genres){
                     genresList.add(g.text());
                 }
+                String castAndDirector = movieElement.select("p.text-small.text-muted:nth-of-type(3)").text();
+                StringCleaning sc = new StringCleaning();
+                sc.directorAndCastSplitor(castAndDirector,directorList,castList);
+
                 int year = Integer.parseInt(yearNoBraces);
                 int rank = Integer.parseInt(rankCleaned);
                 movieAndYear.add(movie);
@@ -45,6 +51,8 @@ public class ImdbScrapper {
                 movieAndYear.add(metascore);
 
                 movieRankList.put(rank, movieAndYear);
+                System.out.println(directorList);
+                System.out.println(castList);
 //                System.out.println(genresList);
 //                System.out.println(movie);
 //                System.out.println(rank);
@@ -57,9 +65,9 @@ public class ImdbScrapper {
             e.printStackTrace();
         }
 
-        for(Map.Entry<Integer , List<String>> movieSet: movieRankList.entrySet()){
-            System.out.println(movieSet.getKey() + " ------> "+ movieSet.getValue());
-        }
+//        for(Map.Entry<Integer , List<String>> movieSet: movieRankList.entrySet()){
+//            System.out.println(movieSet.getKey() + " ------> "+ movieSet.getValue());
+//        }
     }
 
 

@@ -99,6 +99,7 @@ public class Movie {
     public String toString() {
         return name + " ( "+ releaseYear + " )"+
                 " \n "+ certificate + " | " + genre + " | Stars: "+imdbRating+ "| Metascore : "+metaScore+
-                " \n Movie Url: "+ moviePageUrl + "    |   Image Url : "+ imageUrl;
+                "\n Director : "+ directors+ "    |  Cast : "+ cast +
+                " \n Movie Url: "+ moviePageUrl ;
     }
 }
