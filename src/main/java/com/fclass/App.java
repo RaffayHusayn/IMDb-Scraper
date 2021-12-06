@@ -1,6 +1,7 @@
 package com.fclass;
 
 import com.fclass.MovieScrapper.ImdbScrapper;
+import com.fclass.MovieScrapper.ImdbScrapperMovie;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -20,8 +21,8 @@ public class App
 {
     public static void main( String[] args ) throws IOException {
 
-        ImdbScrapper movieList = new ImdbScrapper();
-        movieList.top50List();
+        ImdbScrapperMovie movieList = new ImdbScrapperMovie();
+        movieList.getTop50List();
 
 
         }
