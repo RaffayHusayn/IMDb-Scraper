@@ -1,4 +1,4 @@
-package com.fclass.ImdbUserlistScrapper;
+package com.fclass;
 
 import java.util.List;
 

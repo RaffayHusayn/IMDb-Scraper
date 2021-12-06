@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ImdbScrapper {
+public class ImdbScrapperTest {
    public void top50List(){
         Map<Integer, List<String>> movieRankList = new HashMap<>();
         Map<Integer, String> movieYearList = new HashMap<>();

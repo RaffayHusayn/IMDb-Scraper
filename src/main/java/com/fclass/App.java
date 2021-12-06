@@ -1,12 +1,8 @@
 package com.fclass;
 
-import com.fclass.ImdbUserlistScrapper.ImdbScrapper;
 import com.fclass.ImdbUserlistScrapper.ImdbUserListScrapper;
-import com.fclass.ImdbUserlistScrapper.StringCleaning;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Hello world!

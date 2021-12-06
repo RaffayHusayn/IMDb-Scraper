@@ -1,5 +1,6 @@
 package com.fclass.ImdbUserlistScrapper;
 
+import com.fclass.Movie;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
