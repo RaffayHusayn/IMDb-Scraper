@@ -30,6 +30,8 @@ public class ImdbUserListScrapper {
                 String certificate = movieElement.getElementsByTag("p").first().select("span.certificate").text();
                 String yearNoBraces = yearString.replaceAll("[^0-9]", " ").replaceAll("\\s", "");
                 String rankCleaned = rankString.replaceAll("[^0-9]", " ").replaceAll("\\s", "");
+                String imdbRatingString = movieElement.select("div.ipl-rating-widget > div.ipl-rating-star.small > span.ipl-rating-star__rating").text();
+                String metascoreString = movieElement.select("div.inline-block.ratings-metascore > span.metascore.favorable").text();
 
                 Elements genres = movieElement.getElementsByTag("p").first().select("span.genre");
                 for(Element g: genres){
@@ -37,11 +39,22 @@ public class ImdbUserListScrapper {
                 }
                 int year = Integer.parseInt(yearNoBraces);
                 int rank = Integer.parseInt(rankCleaned);
+                float imdbRatingScrap = 0.0f;
+                int metascoreScrap = 0;
+                if(!imdbRatingString.equals("")) {
+                    imdbRatingScrap = Float.parseFloat(imdbRatingString);
+                }
+                if(!metascoreString.equals("")){
+                    metascoreScrap = Integer.parseInt(metascoreString);
+                }
+
                 m1.setName(movie);
                 m1.setRank(rank);
                 m1.setReleaseYear(year);
                 m1.setCertificate(certificate);
                 m1.setGenre(genresList);
+                m1.setImdbRating(imdbRatingScrap);
+                m1.setMetaScore(metascoreScrap);
                 movieTopList.put(rank, m1);
 
             }
@@ -52,8 +65,6 @@ public class ImdbUserListScrapper {
             e.printStackTrace();
         }
 
-//        System.out.println(movieRankList.get(1));
-//        System.out.println(movieRankList.get(3));
         for (Map.Entry<Integer, Movie> movieSet : movieTopList.entrySet()) {
             System.out.println("("+movieSet.getKey()+")" + " ------> " + movieSet.getValue().toString()+ "\n\n");
         }

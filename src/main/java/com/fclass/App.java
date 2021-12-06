@@ -1,5 +1,6 @@
 package com.fclass;
 
+import com.fclass.ImdbUserlistScrapper.ImdbScrapper;
 import com.fclass.ImdbUserlistScrapper.ImdbUserListScrapper;
 
 import java.io.IOException;

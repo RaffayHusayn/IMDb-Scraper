@@ -3,11 +3,13 @@ package com.fclass.ImdbUserlistScrapper;
 import java.util.List;
 
 public class Movie {
-    String name;
-    int releaseYear;
-    int rank;
-    String certificate;
-    List<String> genre;
+    String name; //name of the movie
+    int releaseYear; //year of release of the movie
+    int rank; // not applicable in most cases
+    String certificate; // the rating that movie got eg: R, PG-13 etc
+    List<String> genre; // List of Genres
+    float imdbRating;
+    int metaScore;
 
     public String getName() {
         return name;
@@ -50,8 +52,25 @@ public class Movie {
         this.genre = genre;
     }
 
+    public float getImdbRating() {
+        return imdbRating;
+    }
+
+    public void setImdbRating(float imdbRating) {
+        this.imdbRating = imdbRating;
+    }
+
+    public int getMetaScore() {
+        return metaScore;
+    }
+
+    public void setMetaScore(int metaScore) {
+        this.metaScore = metaScore;
+    }
+
     @Override
     public String toString() {
-        return name + "( "+ releaseYear + " ) \n "+ certificate + " | " + genre ;
+        return name + "( "+ releaseYear + " ) \n "+ certificate + " | "
+                + genre + " | Stars: "+imdbRating+ "| Metascore : "+metaScore  ;
     }
 }
