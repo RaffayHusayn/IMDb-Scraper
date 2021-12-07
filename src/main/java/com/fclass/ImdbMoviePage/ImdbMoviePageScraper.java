@@ -3,6 +3,11 @@ package com.fclass.ImdbMoviePage;
 import com.fclass.Movie;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ImdbMoviePageScraper {
     String ImdbMoviePageURL;
@@ -10,6 +15,8 @@ public class ImdbMoviePageScraper {
         this.ImdbMoviePageURL = ImdbMoviePageUrl;
         StringCleaningMoviePage stringCleaning = new StringCleaningMoviePage();
         Movie m1 = new Movie();
+        List<String> genreList = new ArrayList<>();
+
 
         try {
             Document moviePageDoc = Jsoup.connect(ImdbMoviePageUrl).get();
@@ -21,9 +28,19 @@ public class ImdbMoviePageScraper {
             int releaseYear= Integer.parseInt(yearAndRatingArray[0]);
             String certificate=yearAndRatingArray[1];
 
+
+
+
+            Elements genreElements = moviePageDoc.select("a.GenresAndPlot__GenreChip-cum89p-3.fzmeux.ipc-chip.ipc-chip--on-baseAlt > span.ipc-chip__text");
+            for(Element g:genreElements){
+                genreList.add(g.text());
+            }
+
+
             m1.setName(movie);
             m1.setReleaseYear(releaseYear);
             m1.setCertificate(certificate);
+            m1.setGenre(genreList);
 
         }catch(Exception e){
             e.printStackTrace();
