@@ -16,6 +16,8 @@ public class ImdbMoviePageScraper {
         StringCleaningMoviePage stringCleaning = new StringCleaningMoviePage();
         Movie m1 = new Movie();
         List<String> genreList = new ArrayList<>();
+        List<String> directorList = new ArrayList<>();
+
 
 
         try {
@@ -40,6 +42,10 @@ public class ImdbMoviePageScraper {
                 genreList.add(g.text());
             }
 
+//            Elements directorElements = moviePageDoc.select("ul.ipc-metadata-list.ipc-metadata-list--dividers-all.StyledComponents__CastMetaDataList-y9ygcu-10.cbPPkN.ipc-metadata-list--base > li").first().select("ul").first().select("li");
+//            for(Element d: directorElements){
+//                directorList.add(d.select("a").text());
+//            }
 
             m1.setName(movie);
             m1.setReleaseYear(releaseYear);
@@ -47,6 +53,7 @@ public class ImdbMoviePageScraper {
             m1.setGenre(genreList);
             m1.setImdbRating(imdbRating);
             m1.setMetaScore(metascore);
+//            m1.setDirectors(directorList);
 
         }catch(Exception e){
             e.printStackTrace();

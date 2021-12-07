@@ -28,12 +28,20 @@ public class ImdbMovieTest {
 
             List<String> genres = new ArrayList<>();
             Elements genreList = moviePageDoc.select("a.GenresAndPlot__GenreChip-cum89p-3.fzmeux.ipc-chip.ipc-chip--on-baseAlt > span.ipc-chip__text");
-            System.out.println("genre list printing now");
             for(Element e: genreList){
                 genres.add(e.text());
             }
 
-            System.out.println("Star ratings : -----> "+ starsString);
+//            Elements directorList = moviePageDoc.select("ul.ipc-inline-list.ipc-inline-list--show-dividers.ipc-inline-list--inline.ipc-metadata-list-item__list-content.base > li.ipc-inline-list__item > a.ipc-metadata-list-item__list-content-item.ipc-metadata-list-item__list-content-item--link");
+//            Elements directorListNew = moviePageDoc.select("section.ipc-page-section.ipc-page-section--base.StyledComponents__CastSection-y9ygcu-0.fswvJC.celwidget > ul.ipc-inline-list.ipc-inline-list--show-dividers.ipc-inline-list--inline.ipc-metadata-list-item__list-content.base > li").first().select("li.ipc-inline-list__item");
+            Elements directorList2 = moviePageDoc.select("ul.ipc-metadata-list.ipc-metadata-list--dividers-all.StyledComponents__CastMetaDataList-y9ygcu-10.cbPPkN.ipc-metadata-list--base > li").first().select("ul").first().select("li");
+            System.out.println("director list printing now");
+            for(Element e: directorList2){
+                System.out.println(e.select("a").text());
+            }
+
+
+            //crew and cast string : li.ipc-inline-list__item
             System.out.println("genres : "+ genres);
             System.out.println(TvOrMovieFlag);
             System.out.println(movie);
