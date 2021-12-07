@@ -28,7 +28,7 @@ public class ImdbMoviePageScraper {
             String certificateAndYearString = moviePageDoc.select("div.TitleBlock__TitleMetaDataContainer-sc-1nlhx7j-2.hWHMKr > ul").first().select("li ").text();
             String imdbRatingString = moviePageDoc.select("div.AggregateRatingButton__Rating-sc-1ll29m0-2.bmbYRW > span").first().text();
             String metascoreString = moviePageDoc.select("span.score-meta").text();
-
+            String synopsis = moviePageDoc.select("span.GenresAndPlot__TextContainerBreakpointXS_TO_M-cum89p-0.dcFkRD").first().text();
             String[] yearAndRatingArray = stringCleaning.yearAndRating(TvOrMovieFlag,certificateAndYearString);
             int releaseYear= Integer.parseInt(yearAndRatingArray[0]);
             String certificate=yearAndRatingArray[1];
@@ -61,6 +61,8 @@ public class ImdbMoviePageScraper {
             m1.setMetaScore(metascore);
             m1.setDirectors(directorList);
             m1.setCast(castList);
+            m1.setDescription(synopsis);
+            m1.setMoviePageUrl(ImdbMoviePageUrl);
 
         }catch(Exception e){
             e.printStackTrace();
