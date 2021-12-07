@@ -1,5 +1,6 @@
 package com.fclass;
 
+import com.fclass.ImdbMoviePage.ImdbMoviePageScraper;
 import com.fclass.ImdbMoviePage.ImdbMovieTest;
 import com.fclass.ImdbUserlist.ImdbUserListScraper;
 
@@ -15,16 +16,13 @@ public class App
 
 //        ImdbMovieTest moviePage = new ImdbMovieTest();
 //        moviePage.scrapImdbMoviePage("https://www.imdb.com/title/tt2402927/?ref_=tt_sims_tt_t_1");
+
+//        ImdbMovieTest moviePage = new ImdbMovieTest();
+//        moviePage.scrapImdbMoviePage("https://www.imdb.com/title/tt0903747/?ref_=fn_al_tt_1");
+
+        ImdbMoviePageScraper moviePageClass = new ImdbMoviePageScraper();
+        moviePageClass.scrapImdbMoviePage("https://www.imdb.com/title/tt0903747/?ref_=fn_al_tt_1");
 //
-
-
-
-        ImdbMovieTest moviePage = new ImdbMovieTest();
-        moviePage.scrapImdbMoviePage("https://www.imdb.com/title/tt0903747/?ref_=fn_al_tt_1");
-//
-
-
-
 
 
         /*
