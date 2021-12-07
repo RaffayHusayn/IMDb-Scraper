@@ -1,6 +1,7 @@
 package com.fclass;
 
-import com.fclass.ImdbUserlist.ImdbUserListScrapper;
+import com.fclass.ImdbMoviePage.ImdbMovieTest;
+import com.fclass.ImdbUserlist.ImdbUserListScraper;
 
 import java.io.IOException;
 
@@ -12,11 +13,25 @@ public class App
 {
     public static void main( String[] args ) throws IOException {
 
+//        ImdbMovieTest moviePage = new ImdbMovieTest();
+//        moviePage.scrapImdbMoviePage("https://www.imdb.com/title/tt2402927/?ref_=tt_sims_tt_t_1");
+//
+
+
+
+        ImdbMovieTest moviePage = new ImdbMovieTest();
+        moviePage.scrapImdbMoviePage("https://www.imdb.com/title/tt0903747/?ref_=fn_al_tt_1");
+//
+
+
+
+
+
         /*
         This returns a Hashmap<Integer, Movie> , This link is for TV shows User List
          */
-        ImdbUserListScrapper movieList = new ImdbUserListScrapper();
-        movieList.scrapImdbUserList("https://www.imdb.com/list/ls039658291/?ref_=rltls_37");
+//        ImdbUserListScraper movieList = new ImdbUserListScraper();
+//        movieList.scrapImdbUserList("https://www.imdb.com/list/ls039658291/?ref_=rltls_37");
 
 
 
