@@ -39,6 +39,10 @@ public class ImdbMovieTest {
             for(Element e: directorList2){
                 System.out.println(e.select("a").text());
             }
+            Elements castElements = moviePageDoc.select("div.ipc-sub-grid.ipc-sub-grid--page-span-2.ipc-sub-grid--wraps-at-above-l.ipc-shoveler__grid > div.StyledComponents__CastItemWrapper-y9ygcu-7.hTEaNu");
+            for(Element c: castElements){
+                System.out.println(c.select("div.StyledComponents__CastItemSummary-y9ygcu-9.fBAofn > a").text());
+            }
 
 
             //crew and cast string : li.ipc-inline-list__item
