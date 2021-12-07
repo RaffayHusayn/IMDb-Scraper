@@ -31,4 +31,12 @@ public class StringCleaningMoviePage {
 
     }
 
+    public int setMetascore( String metascoreString){
+        if(!metascoreString.equals("")){
+            return Integer.parseInt(metascoreString);
+        }else{
+            return 0;
+        }
+    }
+
 }
