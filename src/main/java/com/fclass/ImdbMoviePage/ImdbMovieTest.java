@@ -19,6 +19,7 @@ public class ImdbMovieTest {
             String TvOrMovieFlag = moviePageDoc.select("div.TitleBlock__TitleMetaDataContainer-sc-1nlhx7j-2.hWHMKr > ul").first().select("li ").first().text();
             String certificateAndYearString = moviePageDoc.select("div.TitleBlock__TitleMetaDataContainer-sc-1nlhx7j-2.hWHMKr > ul").first().select("li ").text();
             StringCleaningMoviePage stringCleaning = new StringCleaningMoviePage();
+            String starsString = moviePageDoc.select("div.AggregateRatingButton__Rating-sc-1ll29m0-2.bmbYRW > span").first().text();
 
             String[] yearAndRatingArray = stringCleaning.yearAndRating(TvOrMovieFlag,certificateAndYearString);
             int releaseYear= Integer.parseInt(yearAndRatingArray[0]);
@@ -31,6 +32,8 @@ public class ImdbMovieTest {
             for(Element e: genreList){
                 genres.add(e.text());
             }
+
+            System.out.println("Star ratings : -----> "+ starsString);
             System.out.println("genres : "+ genres);
             System.out.println(TvOrMovieFlag);
             System.out.println(movie);
