@@ -1,5 +1,6 @@
 package com.fclass.ImdbMoviePage;
 
+import com.fclass.CSVWriter;
 import com.fclass.Movie;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -67,6 +68,8 @@ public class ImdbMoviePageScraper {
         }catch(Exception e){
             e.printStackTrace();
         }
+        CSVWriter csvWriter = new CSVWriter();
+        csvWriter.save("csvfile.csv", false,  m1);
         System.out.println(m1.toString());
     }
 }

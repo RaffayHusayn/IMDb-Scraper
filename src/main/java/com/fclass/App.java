@@ -23,12 +23,12 @@ public class App
 //        moviePage.scrapImdbMoviePage("https://www.imdb.com/title/tt0903747/?ref_=fn_al_tt_1");
 
           //  MOVIE OBJECT : (BREAKING BAD)
-        ImdbMoviePageScraper moviePageClass = new ImdbMoviePageScraper();
-        moviePageClass.scrapImdbMoviePage("https://www.imdb.com/title/tt0903747/?ref_=fn_al_tt_1");
+//        ImdbMoviePageScraper moviePageClass = new ImdbMoviePageScraper();
+//        moviePageClass.scrapImdbMoviePage("https://www.imdb.com/title/tt0903747/?ref_=fn_al_tt_1");
 
         // MOVIE OBJECT : (AVENGERS)
-//        ImdbMoviePageScraper moviePageClass = new ImdbMoviePageScraper();
-//        moviePageClass.scrapImdbMoviePage("https://www.imdb.com/title/tt4154756/?ref_=tt_sims_tt_t_12");
+        ImdbMoviePageScraper moviePageClass = new ImdbMoviePageScraper();
+        moviePageClass.scrapImdbMoviePage("https://www.imdb.com/title/tt4154756/?ref_=tt_sims_tt_t_12");
 
 //        ImdbMoviePageScraper moviePageClass = new ImdbMoviePageScraper();
 //        moviePageClass.scrapImdbMoviePage("https://www.imdb.com/title/tt2402927/?ref_=tt_sims_tt_t_1");
