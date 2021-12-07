@@ -1,19 +1,36 @@
 package com.fclass;
 
+import javax.persistence.*;
 import java.util.List;
-
+@Entity
 public class Movie {
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    int id;
+    @Column(name = "movieName" , nullable=true)
     String name; //name of the movie
+    @Column(name = "movieReleaseYear" , nullable=true)
     int releaseYear; //year of release of the movie
+    @Column(name = "movieRank" ,nullable=true)
     int rank; // not applicable in most cases
+    @Column(name = "movieCertificate" , nullable=true)
     String certificate; // the rating that movie got eg: R, PG-13 etc
+    @Column(nullable=true)
+    @ElementCollection
     List<String> genre; // List of Genres
+    @Column(nullable=true)
     float imdbRating; //imdb star ratings
+    @Column(name="movieMetascore" , nullable=true)
     int metaScore; //metascore , if 0 means the score wasn't avaible
+    @Column(name = "moviePageUrl", nullable=true)
     String moviePageUrl; //url to imdb page of the movie
+    @Column(nullable=true)
+    @ElementCollection
     List<String> cast; // list of cast members
+    @Column(nullable=true)
+    @ElementCollection
     List<String> directors; //list of directors, usually one but can be more
-    String description;
+   // String description;
 
     public String getName() {
         return name;
@@ -96,13 +113,13 @@ public class Movie {
         this.directors = directors;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+//    public String getDescription() {
+//        return description;
+//    }
+//
+//    public void setDescription(String description) {
+//        this.description = description;
+//    }
 
     @Override
     public String toString() {
@@ -110,6 +127,6 @@ public class Movie {
                 " \n "+ certificate + " | " + genre + " | Stars: "+imdbRating+ "| Metascore : "+metaScore+
                 "\n Director : "+ directors+ "    |  Cast : "+ cast +
                 " \n Movie Url : "+ moviePageUrl +
-                "\n Synopsis : "+ description;
+                "\n Synopsis : ";
     }
 }

@@ -101,7 +101,7 @@ public class ImdbUserListScraper {
                 m1.setMoviePageUrl(movieUrl);
                 m1.setCast(castList);
                 m1.setDirectors(directorList);
-                m1.setDescription(movieDesc);
+//                m1.setDescription(movieDesc);
                 movieTopList.put(rank, m1);
 
             }

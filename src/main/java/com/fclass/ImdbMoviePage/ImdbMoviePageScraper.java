@@ -1,7 +1,9 @@
 package com.fclass.ImdbMoviePage;
 
 import com.fclass.CSVWriter;
+import com.fclass.DatabaseWriter;
 import com.fclass.Movie;
+import org.hibernate.Session;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -62,7 +64,7 @@ public class ImdbMoviePageScraper {
             m1.setMetaScore(metascore);
             m1.setDirectors(directorList);
             m1.setCast(castList);
-            m1.setDescription(synopsis);
+           // m1.setDescription(synopsis);
             m1.setMoviePageUrl(ImdbMoviePageUrl);
 
         }catch(Exception e){
@@ -71,5 +73,11 @@ public class ImdbMoviePageScraper {
         CSVWriter csvWriter = new CSVWriter();
         csvWriter.save("csvfile.csv", false,  m1);
         System.out.println(m1.toString());
+
+
+        DatabaseWriter dbWriter = new DatabaseWriter();
+        Session s1 = dbWriter.startHibernateSession();
+        dbWriter.persistMovie(s1, m1);
+
     }
 }
