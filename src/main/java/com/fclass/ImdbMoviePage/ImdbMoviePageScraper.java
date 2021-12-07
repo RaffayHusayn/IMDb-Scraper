@@ -29,7 +29,7 @@ public class ImdbMoviePageScraper {
             String[] yearAndRatingArray = stringCleaning.yearAndRating(TvOrMovieFlag,certificateAndYearString);
             int releaseYear= Integer.parseInt(yearAndRatingArray[0]);
             String certificate=yearAndRatingArray[1];
-            int metascore = stringCleaning.setMetascore(TvOrMovieFlag, metascoreString);
+            int metascore = stringCleaning.setMetascore( metascoreString);
             float imdbRating = Float.parseFloat(imdbRatingString);
 
 

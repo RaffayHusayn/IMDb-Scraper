@@ -20,11 +20,11 @@ public class App
 //        ImdbMovieTest moviePage = new ImdbMovieTest();
 //        moviePage.scrapImdbMoviePage("https://www.imdb.com/title/tt0903747/?ref_=fn_al_tt_1");
 
-//        ImdbMoviePageScraper moviePageClass = new ImdbMoviePageScraper();
-//        moviePageClass.scrapImdbMoviePage("https://www.imdb.com/title/tt0903747/?ref_=fn_al_tt_1");
-
         ImdbMoviePageScraper moviePageClass = new ImdbMoviePageScraper();
-        moviePageClass.scrapImdbMoviePage("https://www.imdb.com/title/tt2402927/?ref_=tt_sims_tt_t_1");
+        moviePageClass.scrapImdbMoviePage("https://www.imdb.com/title/tt0903747/?ref_=fn_al_tt_1");
+//
+//        ImdbMoviePageScraper moviePageClass = new ImdbMoviePageScraper();
+//        moviePageClass.scrapImdbMoviePage("https://www.imdb.com/title/tt2402927/?ref_=tt_sims_tt_t_1");
 
         /*
         This returns a Hashmap<Integer, Movie> , This link is for TV shows User List
