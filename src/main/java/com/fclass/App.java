@@ -6,6 +6,8 @@ import com.fclass.ImdbUserlist.ImdbUserListScraper;
 import org.hibernate.Session;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Map;
 
 /**
  * Hello world!
@@ -15,57 +17,31 @@ public class App
 {
     public static void main( String[] args ) throws IOException {
 
-            //TEST: (AVENGERS)
-//        ImdbMovieTest moviePage = new ImdbMovieTest();
-//        moviePage.scrapImdbMoviePage("https://www.imdb.com/title/tt4154756/?ref_=tt_sims_tt_t_12");
-
-            //TEST : (BREAKING BAD)
-//        ImdbMovieTest moviePage = new ImdbMovieTest();
-//        moviePage.scrapImdbMoviePage("https://www.imdb.com/title/tt0903747/?ref_=fn_al_tt_1");
-
-
-
-
-
-
-
-
-          //  MOVIE OBJECT : (BREAKING BAD)
+        /*
+          This returns a single MOVIE OBJECT
+       */
 //        ImdbMoviePageScraper moviePageClass = new ImdbMoviePageScraper();
 //        Movie m1 = moviePageClass.scrapImdbMoviePage("https://www.imdb.com/title/tt0903747/?ref_=fn_al_tt_1");
 //        System.out.println(m1.toString());
 //
-//
+//        /*
+//        Printing to CSV file of a single movie object at a time
+//        */
 //        CSVWriter csvWriter = new CSVWriter();
 //        csvWriter.save("csvfile.csv", false,  m1);
 //
-//
+//        /*
+//        Saving to the database of a single movie object
+//         */
 //        DatabaseWriter dbWriter = new DatabaseWriter();
 //        Session s1 = dbWriter.startHibernateSession();
 //        dbWriter.persistMovie(s1, m1);
-//
 
 
 
 
 
-
-
-
-
-
-        // MOVIE OBJECT : (AVENGERS)
-//        ImdbMoviePageScraper moviePageClass = new ImdbMoviePageScraper();
-//        moviePageClass.scrapImdbMoviePage("https://www.imdb.com/title/tt4154756/?ref_=tt_sims_tt_t_12");
-
-//        ImdbMoviePageScraper moviePageClass = new ImdbMoviePageScraper();
-//        moviePageClass.scrapImdbMoviePage("https://www.imdb.com/title/tt2402927/?ref_=tt_sims_tt_t_1");
-
-        /*
-        This returns a Hashmap<Integer, Movie> , This link is for TV shows User List
-         */
-//        ImdbUserListScraper movieList = new ImdbUserListScraper();
-//        movieList.scrapImdbUserList("https://www.imdb.com/list/ls039658291/?ref_=rltls_37");
+        /*=======================================================*/
 
 
 
@@ -75,7 +51,27 @@ public class App
          */
 //
         ImdbUserListScraper movieList = new ImdbUserListScraper();
-        movieList.scrapImdbUserList("https://www.imdb.com/list/ls079342176/");
+        Map<Integer, Movie> movieListMap = movieList.scrapImdbUserList("https://www.imdb.com/list/ls079342176/");
+
+        CSVWriter csvWriter = new CSVWriter();
+        PrintWriter printWriter = csvWriter.saveOrAppend("csvfile.csv", true);
+        DatabaseWriter databaseWriter = new DatabaseWriter();
+        Session s1 = databaseWriter.startHibernateSession();
+
+
+        for (Map.Entry<Integer, Movie> movieSet : movieListMap.entrySet()) {
+            csvWriter.save(printWriter , movieSet.getValue());
+            databaseWriter.persistMovie(s1, movieSet.getValue());
+            System.out.println("("+movieSet.getKey()+")" + " ------> " + movieSet.getValue().toString()+ "\n\n");
+        }
+        csvWriter.closeCSVWriter(printWriter);
+        databaseWriter.closeHibernateSession(s1);
+
+
+
+
+
+
 
         /*
         This returns Hashmap<Integer, List<String>>
