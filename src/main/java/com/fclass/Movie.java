@@ -1,5 +1,7 @@
 package com.fclass;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.List;
 @Entity
@@ -30,6 +32,7 @@ public class Movie {
     @Column(nullable=true)
     @ElementCollection
     List<String> directors; //list of directors, usually one but can be more
+    @Column( name = "description", columnDefinition="TEXT")
     String description;
 
     public String getName() {

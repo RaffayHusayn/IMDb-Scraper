@@ -10,7 +10,9 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import javax.xml.crypto.Data;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +20,7 @@ import java.util.Map;
 
 public class ImdbUserListScraper {
     String ImdbUserListURL;
-    public void scrapImdbUserList(String ImdbUserListURL) {
+    public void scrapImdbUserList(String ImdbUserListURL) throws IOException {
         this.ImdbUserListURL = ImdbUserListURL;
         Map<Integer, Movie> movieTopList = new HashMap<>();
 
@@ -117,15 +119,17 @@ public class ImdbUserListScraper {
         }
 
         CSVWriter csvWriter = new CSVWriter();
+        PrintWriter printWriter = csvWriter.saveOrAppend("csvfile.csv", false);
         DatabaseWriter databaseWriter = new DatabaseWriter();
         Session s1 = databaseWriter.startHibernateSession();
 
 
         for (Map.Entry<Integer, Movie> movieSet : movieTopList.entrySet()) {
-            csvWriter.save("csvfile.csv", true, movieSet.getValue());
+            csvWriter.save(printWriter , movieSet.getValue());
             databaseWriter.persistMovie(s1, movieSet.getValue());
             System.out.println("("+movieSet.getKey()+")" + " ------> " + movieSet.getValue().toString()+ "\n\n");
         }
+        csvWriter.closeCSVWriter(printWriter);
         databaseWriter.closeHibernateSession(s1);
     }
 }

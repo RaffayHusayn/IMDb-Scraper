@@ -75,7 +75,7 @@ public class App
          */
 //
         ImdbUserListScraper movieList = new ImdbUserListScraper();
-        movieList.scrapImdbUserList("https://www.imdb.com/list/ls098795660/?ref_=tt_rls_1");
+        movieList.scrapImdbUserList("https://www.imdb.com/list/ls079342176/");
 
         /*
         This returns Hashmap<Integer, List<String>>
