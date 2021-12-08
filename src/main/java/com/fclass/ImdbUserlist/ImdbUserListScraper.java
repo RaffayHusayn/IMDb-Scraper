@@ -1,5 +1,6 @@
 package com.fclass.ImdbUserlist;
 
+import com.fclass.CSVWriter;
 import com.fclass.Movie;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -112,7 +113,12 @@ public class ImdbUserListScraper {
             e.printStackTrace();
         }
 
+        CSVWriter csvWriter = new CSVWriter();
+
+
         for (Map.Entry<Integer, Movie> movieSet : movieTopList.entrySet()) {
+            csvWriter.save("csvfile.csv", true, movieSet.getValue());
+
             System.out.println("("+movieSet.getKey()+")" + " ------> " + movieSet.getValue().toString()+ "\n\n");
         }
     }

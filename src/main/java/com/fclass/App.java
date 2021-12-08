@@ -31,19 +31,19 @@ public class App
 
 
           //  MOVIE OBJECT : (BREAKING BAD)
-        ImdbMoviePageScraper moviePageClass = new ImdbMoviePageScraper();
-        Movie m1 = moviePageClass.scrapImdbMoviePage("https://www.imdb.com/title/tt0903747/?ref_=fn_al_tt_1");
-        System.out.println(m1.toString());
-
-
-        CSVWriter csvWriter = new CSVWriter();
-        csvWriter.save("csvfile.csv", false,  m1);
-
-
-        DatabaseWriter dbWriter = new DatabaseWriter();
-        Session s1 = dbWriter.startHibernateSession();
-        dbWriter.persistMovie(s1, m1);
-
+//        ImdbMoviePageScraper moviePageClass = new ImdbMoviePageScraper();
+//        Movie m1 = moviePageClass.scrapImdbMoviePage("https://www.imdb.com/title/tt0903747/?ref_=fn_al_tt_1");
+//        System.out.println(m1.toString());
+//
+//
+//        CSVWriter csvWriter = new CSVWriter();
+//        csvWriter.save("csvfile.csv", false,  m1);
+//
+//
+//        DatabaseWriter dbWriter = new DatabaseWriter();
+//        Session s1 = dbWriter.startHibernateSession();
+//        dbWriter.persistMovie(s1, m1);
+//
 
 
 
@@ -74,8 +74,8 @@ public class App
         This returns a Hashmap<Integer, Movie> , This link is for Movie User List
          */
 //
-//        ImdbUserListScraper movieList = new ImdbUserListScraper();
-//        movieList.scrapImdbUserList("https://www.imdb.com/list/ls098795660/?ref_=tt_rls_1");
+        ImdbUserListScraper movieList = new ImdbUserListScraper();
+        movieList.scrapImdbUserList("https://www.imdb.com/list/ls098795660/?ref_=tt_rls_1");
 
         /*
         This returns Hashmap<Integer, List<String>>
