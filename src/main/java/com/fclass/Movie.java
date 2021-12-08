@@ -32,6 +32,11 @@ public class Movie {
     @Column(nullable=true)
     @ElementCollection
     List<String> directors; //list of directors, usually one but can be more
+    /*
+    Giving a Mysql datatype explicitely because Strings by defult are stored in VarChar by hibernate but some
+    descriptions are too long to be stored in varchar so changing the Column type of the database table to
+    TEXT which can store much larger amounts of string data
+     */
     @Column( name = "description", columnDefinition="TEXT")
     String description;
 
