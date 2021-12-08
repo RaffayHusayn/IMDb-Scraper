@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ImdbMoviePageScraper {
     String ImdbMoviePageURL;
-    public void scrapImdbMoviePage(String ImdbMoviePageUrl){
+    public Movie scrapImdbMoviePage(String ImdbMoviePageUrl){
         this.ImdbMoviePageURL = ImdbMoviePageUrl;
         StringCleaningMoviePage stringCleaning = new StringCleaningMoviePage();
         Movie m1 = new Movie();
@@ -64,20 +64,14 @@ public class ImdbMoviePageScraper {
             m1.setMetaScore(metascore);
             m1.setDirectors(directorList);
             m1.setCast(castList);
-           // m1.setDescription(synopsis);
+            m1.setDescription(synopsis);
             m1.setMoviePageUrl(ImdbMoviePageUrl);
 
         }catch(Exception e){
             e.printStackTrace();
         }
-        CSVWriter csvWriter = new CSVWriter();
-        csvWriter.save("csvfile.csv", false,  m1);
-        System.out.println(m1.toString());
 
 
-        DatabaseWriter dbWriter = new DatabaseWriter();
-        Session s1 = dbWriter.startHibernateSession();
-        dbWriter.persistMovie(s1, m1);
-
+        return m1;
     }
 }

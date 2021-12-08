@@ -25,4 +25,8 @@ public class DatabaseWriter {
         session.save(movie);
         tx.commit();
     }
+
+    public void closeHibernateSession(Session session){
+        session.close();
+    }
 }

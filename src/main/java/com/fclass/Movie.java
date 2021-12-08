@@ -30,7 +30,7 @@ public class Movie {
     @Column(nullable=true)
     @ElementCollection
     List<String> directors; //list of directors, usually one but can be more
-   // String description;
+    String description;
 
     public String getName() {
         return name;
@@ -113,13 +113,13 @@ public class Movie {
         this.directors = directors;
     }
 
-//    public String getDescription() {
-//        return description;
-//    }
-//
-//    public void setDescription(String description) {
-//        this.description = description;
-//    }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     @Override
     public String toString() {
@@ -127,6 +127,6 @@ public class Movie {
                 " \n "+ certificate + " | " + genre + " | Stars: "+imdbRating+ "| Metascore : "+metaScore+
                 "\n Director : "+ directors+ "    |  Cast : "+ cast +
                 " \n Movie Url : "+ moviePageUrl +
-                "\n Synopsis : ";
+                "\n Synopsis : "+ description;
     }
 }
