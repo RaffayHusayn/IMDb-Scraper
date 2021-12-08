@@ -1,12 +1,15 @@
 package com.fclass.ImdbUserlist;
 
 import com.fclass.CSVWriter;
+import com.fclass.DatabaseWriter;
 import com.fclass.Movie;
+import org.hibernate.Session;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -114,12 +117,15 @@ public class ImdbUserListScraper {
         }
 
         CSVWriter csvWriter = new CSVWriter();
+        DatabaseWriter databaseWriter = new DatabaseWriter();
+        Session s1 = databaseWriter.startHibernateSession();
 
 
         for (Map.Entry<Integer, Movie> movieSet : movieTopList.entrySet()) {
             csvWriter.save("csvfile.csv", true, movieSet.getValue());
-
+            databaseWriter.persistMovie(s1, movieSet.getValue());
             System.out.println("("+movieSet.getKey()+")" + " ------> " + movieSet.getValue().toString()+ "\n\n");
         }
+        databaseWriter.closeHibernateSession(s1);
     }
 }
